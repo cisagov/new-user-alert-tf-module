@@ -1,24 +1,14 @@
-output "arn" {
-  value       = module.example.arn
-  description = "The EC2 instance ARN."
+output "topic" {
+  value       = aws_sns_topic.this
+  description = "The SNS topic that will be notified when a new IAM or SSO user is created."
 }
 
-output "availability_zone" {
-  value       = module.example.availability_zone
-  description = "The AZ where the EC2 instance is deployed."
+output "rule" {
+  value       = module.example.rule
+  description = "The EventBridge event rule that will be triggered when a new IAM or SSO user is created."
 }
 
-output "id" {
-  value       = module.example.id
-  description = "The EC2 instance ID."
-}
-
-output "private_ip" {
-  value       = module.example.private_ip
-  description = "The private IP of the EC2 instance."
-}
-
-output "subnet_id" {
-  value       = module.example.subnet_id
-  description = "The ID of the subnet where the EC2 instance is deployed."
+output "target" {
+  value       = module.example.target
+  description = "The EventBridge event target for the rule."
 }
