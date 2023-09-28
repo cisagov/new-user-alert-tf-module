@@ -11,7 +11,15 @@ provider "aws" {
 }
 
 #-------------------------------------------------------------------------------
-# Configure the example module.
+# Create an SNS topic to notify.
+#-------------------------------------------------------------------------------
+resource "aws_sns_topic" "this" {
+  name         = "new-user-topic"
+  display_name = "SNS topic to be notified when a new IAM or SSO user is created."
+}
+
+#-------------------------------------------------------------------------------
+# Configure the module.
 #-------------------------------------------------------------------------------
 module "example" {
   source = "../../"
@@ -19,8 +27,5 @@ module "example" {
     aws = aws
   }
 
-  ami_owner_account_id  = var.ami_owner_account_id
-  aws_availability_zone = var.aws_availability_zone
-  aws_region            = var.aws_region
-  subnet_id             = aws_subnet.example.id
+  target_arn = aws_sns_topic.this.arn
 }

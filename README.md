@@ -2,17 +2,8 @@
 
 [![GitHub Build Status](https://github.com/cisagov/new-user-alert-tf-module/workflows/build/badge.svg)](https://github.com/cisagov/new-user-alert-tf-module/actions)
 
-This is a generic skeleton project that can be used to quickly get a
-new [cisagov](https://github.com/cisagov) [Terraform
-module](https://www.terraform.io/docs/modules/index.html) GitHub
-repository started.  This skeleton project contains [licensing
-information](LICENSE), as well as [pre-commit
-hooks](https://pre-commit.com) and
-[GitHub Actions](https://github.com/features/actions) configurations
-appropriate for the major languages that we use.
-
-See [here](https://www.terraform.io/docs/modules/index.html) for more
-details on Terraform modules and the standard module structure.
+A Terraform module for creating an EventBridge event that triggers
+whenever a new IAM or SSO user is created.
 
 ## Usage ##
 
@@ -20,9 +11,7 @@ details on Terraform modules and the standard module structure.
 module "example" {
   source = "github.com/cisagov/new-user-alert-tf-module"
 
-  aws_region            = "us-west-1"
-  aws_availability_zone = "b"
-  subnet_id             = "subnet-0123456789abcdef0"
+  target_arn = "arn:aws:sns:us-east-1:012345678901:my-sns-topic"
 }
 ```
 
@@ -51,28 +40,21 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [aws_instance.example](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance) | resource |
-| [aws_ami.example](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami) | data source |
-| [aws_default_tags.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/default_tags) | data source |
+| [aws_cloudwatch_event_rule.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_event_rule) | resource |
+| [aws_cloudwatch_event_target.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_event_target) | resource |
 
 ## Inputs ##
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| ami\_owner\_account\_id | The ID of the AWS account that owns the Example AMI, or "self" if the AMI is owned by the same account as the provisioner. | `string` | `"self"` | no |
-| aws\_availability\_zone | The AWS availability zone to deploy into (e.g. a, b, c, etc.). | `string` | `"a"` | no |
-| aws\_region | The AWS region to deploy into (e.g. us-east-1). | `string` | `"us-east-1"` | no |
-| subnet\_id | The ID of the AWS subnet to deploy into (e.g. subnet-0123456789abcdef0). | `string` | n/a | yes |
+| target\_arn | The ARN of a target (usually an SNS topic) that should be notified when an IAM or SSO user is created (e.g. arn:aws:sns:us-east-1:012345678901:my-sns-topic). | `string` | n/a | yes |
 
 ## Outputs ##
 
 | Name | Description |
 |------|-------------|
-| arn | The EC2 instance ARN. |
-| availability\_zone | The AZ where the EC2 instance is deployed. |
-| id | The EC2 instance ID. |
-| private\_ip | The private IP of the EC2 instance. |
-| subnet\_id | The ID of the subnet where the EC2 instance is deployed. |
+| rule | The EventBridge event rule that will be triggered when a new IAM or SSO user is created. |
+| target | The EventBridge event target for the rule. |
 
 ## Notes ##
 
