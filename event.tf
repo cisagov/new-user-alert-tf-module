@@ -1,5 +1,5 @@
 # ------------------------------------------------------------------------------
-# Create a EventBridge event rule for when an IAM or SSO user is
+# Create an EventBridge event rule for when an IAM or SSO user is
 # created.  Connect the event rule to an appropriate SNS topic so that the
 # correct folks are notified.
 # ------------------------------------------------------------------------------
