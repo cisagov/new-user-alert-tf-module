@@ -19,18 +19,19 @@ module "example" {
 
 - [Basic usage](https://github.com/cisagov/new-user-alert-tf-module/tree/develop/examples/basic_usage)
 
+<!-- BEGIN_TF_DOCS -->
 ## Requirements ##
 
 | Name | Version |
 |------|---------|
 | terraform | ~> 1.0 |
-| aws | ~> 3.38 |
+| aws | ~> 4.9 |
 
 ## Providers ##
 
 | Name | Version |
 |------|---------|
-| aws | ~> 3.38 |
+| aws | ~> 4.9 |
 
 ## Modules ##
 
@@ -55,6 +56,7 @@ No modules.
 |------|-------------|
 | rule | The EventBridge event rule that will be triggered when a new IAM or SSO user is created. |
 | target | The EventBridge event target for the rule. |
+<!-- END_TF_DOCS -->
 
 ## Notes ##
 
