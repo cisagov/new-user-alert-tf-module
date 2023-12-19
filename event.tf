@@ -1,22 +1,29 @@
 # ------------------------------------------------------------------------------
-# Create an EventBridge event rule for when an IAM or SSO user is
-# created.  Connect the event rule to an appropriate SNS topic so that the
+# Create an EventBridge event rule for when various IAM or SSO user and group
+# events occur.  Connect the event rule to an appropriate SNS topic so that the
 # correct folks are notified.
 # ------------------------------------------------------------------------------
 
 resource "aws_cloudwatch_event_rule" "this" {
-  description = "Capture each time someone creates an IAM or SSO user."
+  description = "Capture each time someone creates or deletes an IAM or SSO user, adds or removes a user from a group, or creates or deletes a group."
   event_pattern = jsonencode({
     detail-type = ["AWS API Call via CloudTrail"]
     detail = {
-      eventName = ["CreateUser"]
+      eventName = [
+        "AddUserToGroup",
+        "CreateGroup",
+        "CreateUser",
+        "DeleteGroup",
+        "DeleteUser",
+        "RemoveUserFromGroup",
+      ]
       eventSource = [
         "iam.amazonaws.com",
         "sso-directory.amazonaws.com",
       ],
     }
   })
-  name = "capture-create-user"
+  name = "capture-user-group-events"
 }
 
 resource "aws_cloudwatch_event_target" "this" {
