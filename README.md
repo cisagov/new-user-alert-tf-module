@@ -48,7 +48,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| target\_arn | The ARN of a target (usually an SNS topic) that should be notified when certain IAM/SSO user or group events occur (e.g. arn:aws:sns:us-east-1:012345678901:my-sns-topic). | `string` | n/a | yes |
+| target\_arn | The ARN of a target (usually an SNS topic) that should be notified when someone creates or deletes an IAM or SSO user, adds or removes a user from a group, or creates or deletes a group (e.g. arn:aws:sns:us-east-1:012345678901:my-sns-topic). | `string` | n/a | yes |
 
 ## Outputs ##
 
