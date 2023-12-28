@@ -1,4 +1,8 @@
-# Notify an SNS Topic When a New IAM or SSO User is Created #
+# Notify an SNS Topic When Certain IAM or SSO User or Group Events Occur #
+
+Specifically, the SNS topic is notified when a new IAM or SSO user is created
+or deleted, a user is added or removed from a group, or a group is created or
+deleted.
 
 ## Usage ##
 
@@ -45,6 +49,6 @@ Note that this example may create resources which cost money. Run
 
 | Name | Description |
 |------|-------------|
-| rule | The EventBridge event rule that will be triggered when a new IAM or SSO user is created. |
+| rule | The EventBridge event rule that will be triggered when a new IAM or SSO user is created or deleted, a user is added or removed from a group, or a group is created or deleted. |
 | target | The EventBridge event target for the rule. |
-| topic | The SNS topic that will be notified when a new IAM or SSO user is created. |
+| topic | The SNS topic that will be notified when a new IAM or SSO user is created or deleted, a user is added or removed from a group, or a group is created or deleted. |
