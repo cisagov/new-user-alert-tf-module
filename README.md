@@ -1,15 +1,16 @@
-# new-user-alert-tf-module #
+# user-group-mod-alert-tf-module #
 
-[![GitHub Build Status](https://github.com/cisagov/new-user-alert-tf-module/workflows/build/badge.svg)](https://github.com/cisagov/new-user-alert-tf-module/actions)
+[![GitHub Build Status](https://github.com/cisagov/user-group-mod-alert-tf-module/workflows/build/badge.svg)](https://github.com/cisagov/user-group-mod-alert-tf-module/actions)
 
-A Terraform module for creating an EventBridge event that triggers
-whenever a new IAM or SSO user is created.
+A Terraform module for creating an EventBridge event that triggers whenever a
+new IAM or SSO user is created or deleted, a user is added or removed from a
+group, or a group is created or deleted.
 
 ## Usage ##
 
 ```hcl
 module "example" {
-  source = "github.com/cisagov/new-user-alert-tf-module"
+  source = "github.com/cisagov/user-group-mod-alert-tf-module"
 
   target_arn = "arn:aws:sns:us-east-1:012345678901:my-sns-topic"
 }
@@ -17,7 +18,7 @@ module "example" {
 
 ## Examples ##
 
-- [Basic usage](https://github.com/cisagov/new-user-alert-tf-module/tree/develop/examples/basic_usage)
+- [Basic usage](https://github.com/cisagov/user-group-mod-alert-tf-module/tree/develop/examples/basic_usage)
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements ##
