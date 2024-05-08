@@ -12,6 +12,7 @@ followed by the `terraform apply` command.
 Note that this example may create resources which cost money. Run
 `terraform destroy` when you no longer need these resources.
 
+<!-- BEGIN_TF_DOCS -->
 ## Requirements ##
 
 | Name | Version |
@@ -52,3 +53,4 @@ Note that this example may create resources which cost money. Run
 | rule | The EventBridge event rule that will be triggered when a new IAM or SSO user is created or deleted, a user is added or removed from a group, or a group is created or deleted. |
 | target | The EventBridge event target for the rule. |
 | topic | The SNS topic that will be notified when a new IAM or SSO user is created or deleted, a user is added or removed from a group, or a group is created or deleted. |
+<!-- END_TF_DOCS -->
