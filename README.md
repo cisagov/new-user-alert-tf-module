@@ -49,13 +49,13 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| target\_arn | The ARN of a target (usually an SNS topic) that should be notified when someone creates or deletes an IAM or SSO user, adds or removes a user from a group, or creates or deletes a group (e.g. arn:aws:sns:us-east-1:012345678901:my-sns-topic). | `string` | n/a | yes |
+| target\_arn | The ARN of a target (usually an SNS topic) that should be notified when a new IAM or SSO user is created or deleted, a user is added or removed from a group, or a group is created or deleted (e.g. arn:aws:sns:us-east-1:012345678901:my-sns-topic). | `string` | n/a | yes |
 
 ## Outputs ##
 
 | Name | Description |
 |------|-------------|
-| rule | The EventBridge event rule that will be triggered when a new IAM or SSO user is created. |
+| rule | The EventBridge event rule that will be triggered when a new IAM or SSO user is created or deleted, a user is added or removed from a group, or a group is created or deleted. |
 | target | The EventBridge event target for the rule. |
 <!-- END_TF_DOCS -->
 
