@@ -14,8 +14,8 @@ provider "aws" {
 # Create an SNS topic to notify.
 #-------------------------------------------------------------------------------
 resource "aws_sns_topic" "this" {
-  name         = "new-user-topic"
   display_name = "SNS topic to be notified when a new IAM or SSO user is created."
+  name         = "new-user-topic"
 }
 
 #-------------------------------------------------------------------------------
